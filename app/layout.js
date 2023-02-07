@@ -1,16 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Router from "../components/Router";
+import { useEffect, useState, Suspense } from "react";
 import { authService } from "../lib/firebase";
 import { onAuthStateChanged, updateProfile } from "firebase/auth";
-import Loading from "../components/Loading";
+import Router from "../components/Router";
 import "./global.css";
+import Loading from "./Loading";
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, ...pageProps }) {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
+
+  console.log("layout", children.props, pageProps);
 
   useEffect(() => {
     onAuthStateChanged(authService, (user) => {
@@ -52,16 +54,18 @@ export default function RootLayout({ children }) {
     <html lang="ko">
       <head />
       <body>
-        {init ? (
+        {children}
+        {/* {init ? (
           <Router
             children={children}
+            pageProps={pageProps}
             isLoggedIn={isLoggedIn}
             refreshUser={refreshUser}
             userObj={userObj}
           />
         ) : (
           <Loading />
-        )}
+        )} */}
       </body>
     </html>
   );

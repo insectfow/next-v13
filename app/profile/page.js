@@ -19,7 +19,7 @@ const profile = () => {
   return (
     <>
       <p>profile</p>
-      <button onClick={onSignOut}>로그아웃하기</button>
+      <button onClick={onSignOut}>로그아웃</button>
     </>
   );
 };
