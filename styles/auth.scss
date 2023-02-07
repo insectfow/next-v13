@@ -50,13 +50,16 @@
     }
   }
   > label {
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
     font-size: 1rem;
     cursor: pointer;
     > input {
       margin-right: 10px;
       box-sizing: border-box;
       cursor: pointer;
+      background: #fff;
     }
   }
   > button {
@@ -110,6 +113,10 @@
 
   > span {
     margin-bottom: 5px;
+    width: 44px;
+  }
+  > span:first-child {
+    text-align: right;
   }
 
   .text-on {

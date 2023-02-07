@@ -7,7 +7,7 @@ import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import Loading from "../components/Loading";
 import "./global.css";
 
-export default function RootLayout({ children, ...props }) {
+export default function RootLayout({ children }) {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
@@ -26,7 +26,6 @@ export default function RootLayout({ children, ...props }) {
               photoURL: user.photoURL,
             }),
         });
-        // 너때문이군
       } else {
         setIsLoggedIn(false);
         setUserObj(null);
@@ -59,7 +58,6 @@ export default function RootLayout({ children, ...props }) {
             isLoggedIn={isLoggedIn}
             refreshUser={refreshUser}
             userObj={userObj}
-            {...props}
           />
         ) : (
           <Loading />

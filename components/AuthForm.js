@@ -201,7 +201,7 @@ const AuthForm = () => {
         <button type="button" name="google" onClick={socialLogin}>
           google
         </button>
-        <button type="button" name="gitgub" onClick={socialLogin}>
+        <button type="button" name="github" onClick={socialLogin}>
           gitgub
         </button>
       </div>
