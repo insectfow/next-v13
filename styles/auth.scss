@@ -1,0 +1,124 @@
+.auth-title {
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+}
+
+.flex-auth {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh !important;
+}
+
+.auth-form {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  flex-direction: column;
+  .auth-input-box {
+    position: relative;
+    width: 100%;
+    height: 46px;
+    margin-bottom: 10px;
+    > input {
+      width: 100%;
+      height: 100%;
+      padding: 0 10px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    }
+  }
+  .pw {
+    > input {
+      padding: 0 48px 0 10px;
+    }
+  }
+  .eyes-box {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    > img {
+      cursor: pointer;
+    }
+  }
+  > label {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    > input {
+      margin-right: 10px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+  }
+  > button {
+    width: 100%;
+    height: 52px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 60px;
+    font-size: 1rem;
+  }
+}
+
+.error {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: red;
+  text-align: center;
+  height: 40px;
+}
+
+.auth-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  > button {
+    position: relative;
+    max-width: 80px;
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    > span {
+      transition: left 0.2s ease-in-out;
+      position: absolute;
+      left: 4px;
+      top: 3px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50px;
+      background: #fff;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    > span.on {
+      left: 41px;
+    }
+  }
+
+  > span {
+    margin-bottom: 5px;
+  }
+
+  .text-on {
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .text-off {
+    color: #ececec;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  }
+}

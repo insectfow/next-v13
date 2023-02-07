@@ -31,5 +31,64 @@ a {
   padding: 0;
 }
 
+input,
+button {
+  border: none;
+  border: 1px solid #eaeaea;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input:hover,
+button:hover {
+  border: 1px solid #000;
+}
+
+a,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #000;
+}
+
+/* 레이아웃 컨테이너 */
+
+.container {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 5px 20px;
+}
+
+/* 헤더 */
+
 .header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo a {
+  display: flex;
+}
+
+.header-nav {
+}
+
+.header-nav a {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    width: 100%;
+    padding: 0 32px;
+  }
 }

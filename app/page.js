@@ -1,8 +1,8 @@
-export default function Page() {
+export default function Page(data) {
+  console.log(data);
   return (
     <>
       <h1>Hello, Next.js!</h1>
-      <p>222</p>
     </>
   );
 }
