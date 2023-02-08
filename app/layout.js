@@ -6,8 +6,6 @@ import Router from "../components/Router";
 import "../styles/global.css";
 import Loading from "./Loading";
 
-// import { store } from "../store/index";
-// import { Provider } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 
 export const globalContext = createContext({});
@@ -68,7 +66,6 @@ export default function RootLayout({ children }) {
         <globalContext.Provider value={value}>
           {init ? <Router children={children} /> : <Loading />}
         </globalContext.Provider>
-        {/* <Provider store={store}></Provider> */}
       </body>
     </html>
   );

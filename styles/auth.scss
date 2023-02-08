@@ -88,6 +88,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-bottom: 40px;
   > button {
     position: relative;
     max-width: 80px;
@@ -127,5 +128,26 @@
   .text-off {
     color: #ececec;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.auth-social-title {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.auth-social {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  > button {
+    display: flex;
+    background: #fff;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
   }
 }

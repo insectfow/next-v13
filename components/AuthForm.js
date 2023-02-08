@@ -1,17 +1,17 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { authService, googleProvider, githubProvider } from "../lib/firebase";
+import { authService } from "../lib/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   setPersistence,
   browserSessionPersistence,
   browserLocalPersistence,
-  signInWithPopup,
 } from "firebase/auth";
 
 import eyesOn from "../public/eyes_on.svg";
 import eyesOff from "../public/eyes_off.svg";
+import AuthSocial from "./AuthSocial";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -127,26 +127,8 @@ const AuthForm = () => {
     setIsEyes((prev) => !prev);
   };
 
-  const socialLogin = async (e) => {
-    const {
-      target: { name },
-    } = e;
-    try {
-      await signInWithPopup(
-        authService,
-        name === "google"
-          ? googleProvider
-          : name === "github"
-          ? githubProvider
-          : null
-      )
-        .then((result) => {})
-        .catch((error) => {
-          setError({ code: error.code, message: error.message });
-        });
-    } catch (error) {
-      setError({ code: error.code, message: error.message });
-    }
+  const onError = (error) => {
+    setError(error);
   };
 
   return (
@@ -197,14 +179,7 @@ const AuthForm = () => {
         </button>
         <span className={loginToggle ? "text-off" : "text-on"}>Join</span>
       </div>
-      <div className="auth-social">
-        <button type="button" name="google" onClick={socialLogin}>
-          google
-        </button>
-        <button type="button" name="github" onClick={socialLogin}>
-          gitgub
-        </button>
-      </div>
+      <AuthSocial onError={onError} />
     </>
   );
 };
