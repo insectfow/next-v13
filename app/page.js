@@ -3,7 +3,7 @@
 import { dbService } from "../lib/firebase";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import ChatBot from "../components/chatAi";
+import ChatBot from "../components/ChatBot";
 
 export default function home() {
   // const data = await getData();
