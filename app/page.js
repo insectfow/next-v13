@@ -1,7 +1,10 @@
 "use client";
 
-const home = ({ ...pageProps }) => {
-  console.log("page", pageProps);
+import { useEffect } from "react";
+
+const home = () => {
+  useEffect(() => {}, []);
+
   return (
     <>
       <h1>Hello, Next.js!</h1>

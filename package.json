@@ -6,6 +6,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.2",
     "eslint-config-next": "^13.1.6",
     "firebase": "^9.17.1",
     "next": "^13.1.6",

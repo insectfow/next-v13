@@ -1,36 +1,39 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState, createContext } from "react";
 import { authService } from "../lib/firebase";
-import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import Router from "../components/Router";
-import "./global.css";
+import "../styles/global.css";
 import Loading from "./Loading";
 
-export default function RootLayout({ children, ...pageProps }) {
+// import { store } from "../store/index";
+// import { Provider } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+
+export const globalContext = createContext({});
+
+export default function RootLayout({ children }) {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userObj, setUserObj] = useState(null);
-
-  console.log("layout", children.props, pageProps);
+  const [userObj, setUserObj] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(authService, (user) => {
       if (user) {
-        setIsLoggedIn(true);
         setUserObj({
           displayName: user.displayName,
-          uid: user.uid,
           photoURL: user.photoURL,
-          updateProfile: (args) =>
+          updateProfile: (arg) =>
             updateProfile(user, {
               displayName: user.displayName,
               photoURL: user.photoURL,
             }),
         });
+
+        setIsLoggedIn(true);
       } else {
-        setIsLoggedIn(false);
         setUserObj(null);
+        setIsLoggedIn(false);
       }
       setInit(true);
     });
@@ -50,22 +53,22 @@ export default function RootLayout({ children, ...pageProps }) {
     });
   };
 
+  const value = {
+    isLoggedIn,
+    setIsLoggedIn,
+    userObj,
+    setUserObj,
+    refreshUser,
+  };
+
   return (
     <html lang="ko">
       <head />
       <body>
-        {children}
-        {/* {init ? (
-          <Router
-            children={children}
-            pageProps={pageProps}
-            isLoggedIn={isLoggedIn}
-            refreshUser={refreshUser}
-            userObj={userObj}
-          />
-        ) : (
-          <Loading />
-        )} */}
+        <globalContext.Provider value={value}>
+          {init ? <Router children={children} /> : <Loading />}
+        </globalContext.Provider>
+        {/* <Provider store={store}></Provider> */}
       </body>
     </html>
   );
