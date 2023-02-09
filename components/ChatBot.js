@@ -9,6 +9,8 @@ import Image from "next/image";
 import robotImage from "../public/robot.svg";
 import userImage from "../public/user.svg";
 
+import Loading from "../app/Loading";
+
 const ChatBot = () => {
   // 질문
   const [questions, setQuestions] = useState();
@@ -26,7 +28,7 @@ const ChatBot = () => {
           model: "text-davinci-003",
           prompt: `${data}`,
           temperature: 0.9,
-          max_tokens: 150,
+          max_tokens: 300,
           top_p: 1,
           frequency_penalty: 0,
           presence_penalty: 0.6,
@@ -39,8 +41,6 @@ const ChatBot = () => {
           },
         }
       );
-      console.log(pos);
-
       // pos.data.choices[0].text가 채팅 데이터구나. id까지 담아서 chat 변수에 같이 담아줘
 
       setChat((prev) => [
@@ -52,7 +52,8 @@ const ChatBot = () => {
     } catch (error) {
       // 에러시 로딩 풀고 오류 팝업, 데이터 리셋하네
       setWaitAnswer((prev) => !prev);
-      alert("오류가 발생하였습니다.");
+
+      alert(error.message);
       setQuestions("");
       setChat([]);
     }
@@ -122,7 +123,7 @@ const ChatBot = () => {
           placeholder="챗봇에게 물어보기"
         />
         <button type="submit" disabled={waitAnswer}>
-          {waitAnswer ? <div>....loading</div> : <>전송</>}
+          {waitAnswer ? <Loading /> : <>전송</>}
         </button>
       </form>
     </div>
