@@ -39,7 +39,7 @@ const ChatBot = () => {
           },
         }
       );
-      //   console.log(pos);
+      console.log(pos);
 
       // pos.data.choices[0].text가 채팅 데이터구나. id까지 담아서 chat 변수에 같이 담아줘
 
