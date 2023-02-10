@@ -1,0 +1,69 @@
+.earthquake-page {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  > h3 {
+    margin-bottom: 20px;
+  }
+}
+
+.earthquake-list-box {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  > li {
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    border: 4px solid #eaeaea;
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+    .image-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-bottom: 4px solid #eaeaea;
+    }
+
+    .info-box {
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+      box-sizing: border-box;
+      width: 100%;
+      > li {
+        display: flex;
+        line-height: 1.5;
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+        > em {
+          position: relative;
+          font-style: normal;
+          min-width: 60px;
+          margin-right: 10px;
+        }
+        > em::after {
+          position: absolute;
+          content: "";
+          width: 2px;
+          height: 80%;
+          top: 50%;
+          right: -5px;
+          transform: translateY(-50%);
+          background: #dfdfdf;
+        }
+        > span {
+          display: flex;
+        }
+      }
+    }
+  }
+}

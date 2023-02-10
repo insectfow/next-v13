@@ -1,7 +1,9 @@
 const nextConfig = {
   experimental: {
     appDir: true,
-    allowMiddlewareResponseBody: true,
+  },
+  images: {
+    domains: ["www.weather.go.kr"],
   },
 };
 

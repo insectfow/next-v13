@@ -123,9 +123,10 @@ const ChatBot = () => {
           placeholder="챗봇에게 물어보기"
         />
         <button type="submit" disabled={waitAnswer}>
-          {waitAnswer ? <Loading /> : <>전송</>}
+          전송
         </button>
       </form>
+      {waitAnswer && <Loading />}
     </div>
   );
 };
