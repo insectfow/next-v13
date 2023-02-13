@@ -1,0 +1,1 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg" version="1.1"> <rect x="0" y="0" width="400" height="400" fill="black" /> <circle cx="100" cy="100" r="50" fill="#F32164" /> <circle cx="200" cy="200" r="80" fill="white" /> <circle cx="250" cy="300" r="60" fill="yellow" /> <circle cx="90" cy="320" r="50" fill="#5E37A5" /> </svg>

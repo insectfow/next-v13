@@ -14,15 +14,20 @@
     border: 1px solid #eaeaea;
     box-sizing: border-box;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
     > a {
       padding: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
       aspect-ratio: 1/1;
     }
+    background: #fff;
+  }
+  > li:hover {
+    transform: scale(1.2);
   }
 }
 

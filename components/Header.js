@@ -10,6 +10,10 @@ import LogoImage from "../public/faviconB.svg";
 const Header = () => {
   const [navList, setNavList] = useState([
     {
+      title: "Tistory",
+      path: "https://dev-ach.tistory.com/",
+    },
+    {
       title: "Profile",
       path: "/profile",
     },
@@ -23,6 +27,7 @@ const Header = () => {
             <Image
               width={60}
               height={60}
+              priority
               src={LogoImage}
               title="DH logo"
               alt="DH logo"

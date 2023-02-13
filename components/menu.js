@@ -7,6 +7,8 @@ import "../styles/menu.scss";
 
 import robotImage from "../public/robot.svg";
 import earthquakeImage from "../public/earthquake.svg";
+import imageImage from "../public/image.svg";
+
 export default function home() {
   const [menuList, setMenuList] = useState([
     {
@@ -25,6 +27,15 @@ export default function home() {
       image: {
         url: earthquakeImage,
         alt: "earthquake icon",
+      },
+    },
+    {
+      id: 3,
+      title: "이미지 생성",
+      path: "/imagebot",
+      image: {
+        url: imageImage,
+        alt: "image icon",
       },
     },
   ]);
