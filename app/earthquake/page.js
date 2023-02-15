@@ -9,8 +9,12 @@ import "dayjs/locale/ko";
 import "../../styles/earthquake.scss";
 import Loading from "../Loading";
 
+import noImage from "../../public/no-image.svg";
 export default function page() {
   const [itemList, setItemList] = useState([]);
+
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     dayjs.locale("ko");
     const getEqk = async () => {
@@ -41,7 +45,9 @@ export default function page() {
         const res = await axios.get(baseUrl + queryParams);
 
         setItemList(res.data.response.body.items.item);
-      } catch (error) {}
+      } catch (error) {
+        setError(error.code);
+      }
     };
     getEqk();
   }, []);
@@ -56,49 +62,56 @@ export default function page() {
               return (
                 <li key={stnId}>
                   <div className="image-box">
-                    <Image
-                      fill="responsive"
-                      priority
-                      src={img}
-                      alt="지진 위치 이미지"
-                    />
+                    {img ? (
+                      <img src={img} alt="지진 위치 이미지"></img>
+                    ) : (
+                      <Image
+                        width={300}
+                        height={300}
+                        priority
+                        src={noImage}
+                        alt="이미지 없음 이미지"
+                      />
+                    )}
                   </div>
                   <ul className="info-box">
                     <li>
                       <em>규모</em>
-                      <span>{mt}</span>
+                      <span>{mt ? mt : "-"}</span>
                     </li>
                     <li>
                       <em>진앙지</em>
-                      <span>{loc}</span>
+                      <span>{loc ? loc : "-"}</span>
                     </li>
                     <li>
                       <em>참고사항</em>
-                      <span>{rem}</span>
+                      <span>{rem ? rem : "-"}</span>
                     </li>
                     <li>
                       <em>진앙 시각</em>
                       <span>
-                        {dayjs(String(tmEqk), "YYYYMMDDHHmmss").format(
-                          "YYYY. MM. DD. HH시 mm분 ss초"
-                        )}
+                        {tmEqk
+                          ? dayjs(String(tmEqk), "YYYYMMDDHHmmss").format(
+                              "YYYY. MM. DD. HH시 mm분 ss초"
+                            )
+                          : "-"}
                       </span>
                     </li>
                     <li>
                       <em>위도</em>
-                      <span>{lat}</span>
+                      <span>{lat ? lat : "-"}</span>
                     </li>
                     <li>
                       <em>경도</em>
-                      <span>{lon}</span>
+                      <span>{lon ? lon : "-"}</span>
                     </li>
                     <li>
                       <em>발생깊이</em>
-                      <span>{dep + "km"}</span>
+                      <span>{dep ? dep + "km" : "-"}</span>
                     </li>
                     <li>
                       <em>진도</em>
-                      <span>{inT}</span>
+                      <span>{inT ? inT : "-"}</span>
                     </li>
                   </ul>
                 </li>
@@ -109,6 +122,7 @@ export default function page() {
           <Loading />
         )}
       </ul>
+      {error && <>{error}</>}
     </div>
   );
 }
