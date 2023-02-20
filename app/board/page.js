@@ -80,7 +80,7 @@ export default function board() {
 
         <form onSubmit={onSubmit}>
           <input placeholder="입력해주세요" onChange={onChange} />
-          <button type="submit">문의하기</button>
+          <button type="submit">남기기</button>
           {error && <p>{error}</p>}
         </form>
 
