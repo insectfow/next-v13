@@ -9,6 +9,7 @@ import robotImage from '../public/robot.svg';
 import earthquakeImage from '../public/earthquake.svg';
 import imageImage from '../public/image.svg';
 import boardImage from '../public/board.svg';
+import cloudImage from '../public/cloud.svg';
 
 export default function home() {
   const [menuList, setMenuList] = useState([
@@ -53,8 +54,8 @@ export default function home() {
       title: '전국 미세먼지',
       path: '/dust',
       image: {
-        url: boardImage,
-        alt: 'board icon',
+        url: cloudImage,
+        alt: 'dust icon',
       },
     },
   ]);
