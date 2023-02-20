@@ -1,10 +1,11 @@
-import { signInWithPopup } from "firebase/auth";
-import { authService, googleProvider, githubProvider } from "../lib/firebase";
+import { signInWithPopup } from 'firebase/auth';
+import { authService, googleProvider, githubProvider, facebookProvider } from '../lib/firebase';
 
-import Image from "next/image";
+import Image from 'next/image';
 
-import githubImage from "../public/github.svg";
-import googleImage from "../public/google.svg";
+import githubImage from '../public/github.svg';
+import googleImage from '../public/google.svg';
+import facebookImage from '../public/facebook.svg';
 
 export default function AuthSocial({ onError }) {
   const socialLogin = async (e) => {
@@ -14,11 +15,13 @@ export default function AuthSocial({ onError }) {
     try {
       await signInWithPopup(
         authService,
-        name === "google"
+        name === 'google'
           ? googleProvider
-          : name === "github"
+          : name === 'github'
           ? githubProvider
-          : null
+          : name === 'facebook'
+          ? facebookProvider
+          : null,
       )
         .then((result) => {})
         .catch((error) => {
@@ -48,6 +51,16 @@ export default function AuthSocial({ onError }) {
             src={githubImage}
             alt="github logo"
             name="github"
+            onClick={socialLogin}
+          />
+        </button>
+        <button type="button">
+          <Image
+            width={40}
+            height={40}
+            src={facebookImage}
+            alt="facebook logo"
+            name="facebook"
             onClick={socialLogin}
           />
         </button>

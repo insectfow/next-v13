@@ -75,6 +75,7 @@ a:active {
   width: 100%;
   border-bottom: 1px solid #eaeaea;
   background: #fff;
+  z-index: 100;
 }
 
 .flex-header {

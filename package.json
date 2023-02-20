@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "next dev",
+    "dev": "set PORT=3300 && next dev ",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -8,6 +8,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
     "@vercel/edge-config": "^0.1.1",
+    "browser-image-compression": "^2.0.0",
     "cors": "^2.8.5",
     "dayjs": "^1.11.7",
     "eslint-config-next": "^13.1.6",

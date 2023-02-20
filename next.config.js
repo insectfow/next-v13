@@ -3,8 +3,15 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["www.weather.go.kr"],
+    domains: [
+      'www.weather.go.kr',
+      'avatars.githubusercontent.com',
+      'firebasestorage.googleapis.com',
+      'oaidalleapiprodscus.blob.core.windows.net',
+      'graph.facebook.com',
+    ],
   },
+  reactStrictMode: false,
 };
 
 module.exports = nextConfig;

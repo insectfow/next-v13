@@ -1,41 +1,51 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import "../styles/menu.scss";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import '../styles/menu.scss';
 
-import robotImage from "../public/robot.svg";
-import earthquakeImage from "../public/earthquake.svg";
-import imageImage from "../public/image.svg";
+import robotImage from '../public/robot.svg';
+import earthquakeImage from '../public/earthquake.svg';
+import imageImage from '../public/image.svg';
+import boardImage from '../public/board.svg';
 
 export default function home() {
   const [menuList, setMenuList] = useState([
     {
       id: 1,
-      title: "챗봇 기능",
-      path: "/chatbot",
+      title: '챗봇 기능',
+      path: '/chatbot',
       image: {
         url: robotImage,
-        alt: "robot icon",
+        alt: 'robot icon',
       },
     },
     {
       id: 2,
-      title: "지진 정보",
-      path: "/earthquake",
+      title: '지진 정보',
+      path: '/earthquake',
       image: {
         url: earthquakeImage,
-        alt: "earthquake icon",
+        alt: 'earthquake icon',
       },
     },
     {
       id: 3,
-      title: "이미지 생성",
-      path: "/imagebot",
+      title: '이미지 생성',
+      path: '/imagebot',
       image: {
         url: imageImage,
-        alt: "image icon",
+        alt: 'image icon',
+      },
+    },
+    {
+      id: 4,
+      title: '방명록 작성',
+      path: '/board',
+      image: {
+        url: boardImage,
+        alt: 'board icon',
       },
     },
   ]);
@@ -46,12 +56,7 @@ export default function home() {
           return (
             <li key={id}>
               <Link href={path}>
-                <Image
-                  width={36}
-                  height={36}
-                  src={image.url}
-                  alt={image.alt}
-                ></Image>
+                <Image width={36} height={36} src={image.url} alt={image.alt}></Image>
                 {title}
               </Link>
             </li>

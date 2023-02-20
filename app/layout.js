@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useState, createContext } from "react";
-import { authService } from "../lib/firebase";
-import Router from "../components/Router";
-import "../styles/global.css";
-import Loading from "./Loading";
+import { useEffect, useState, createContext } from 'react';
+import { authService } from '../lib/firebase';
+import Router from '../components/Router';
+import '../styles/global.css';
+import Loading from './Loading';
 
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from 'firebase/auth';
 
 export const globalContext = createContext({});
 
@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
         setUserObj({
           displayName: user.displayName,
           photoURL: user.photoURL,
+          uid: user.uid,
           updateProfile: (arg) =>
             updateProfile(user, {
               displayName: user.displayName,

@@ -1,15 +1,16 @@
-import axios from "axios";
-import React, { useState } from "react";
-import Loading from "../app/Loading";
-import { v4 as uuidv4 } from "uuid";
+import axios from 'axios';
+import React, { useState } from 'react';
+import Loading from '../app/Loading';
+import { v4 as uuidv4 } from 'uuid';
 
-import "../styles/imagebot.scss";
+import '../styles/imagebot.scss';
+import Image from 'next/image';
 const ImageBot = () => {
   const [waitAnswer, setWaitAnswer] = useState(false);
   const [text, setText] = useState();
   const [images, setImages] = useState([]);
 
-  const [sizes, setSizes] = useState("256");
+  const [sizes, setSizes] = useState('256');
 
   const getImage = async (keyword, sizes) => {
     let size = null;
@@ -20,26 +21,23 @@ const ImageBot = () => {
 
     try {
       const pos = await axios.post(
-        "https://api.openai.com/v1/images/generations",
+        'https://api.openai.com/v1/images/generations',
         {
           prompt: keyword,
           n: 1,
-          size: size ? size : "1024x1024",
+          size: size ? size : '1024x1024',
         },
         {
           headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + String(process.env.NEXT_PUBLIC_OPEN_API),
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + String(process.env.NEXT_PUBLIC_OPEN_API),
           },
-        }
+        },
       );
 
-      setImages((prev) => [
-        ...prev,
-        { url: pos.data.data[0].url, id: uuidv4(), title: keyword },
-      ]);
+      setImages((prev) => [...prev, { url: pos.data.data[0].url, id: uuidv4(), title: keyword }]);
 
-      setText("");
+      setText('');
 
       // 데이터 처리가 끝나면 로딩을 풀어줘
       setWaitAnswer((prev) => !prev);
@@ -49,7 +47,7 @@ const ImageBot = () => {
 
       alert(error.message);
       setImages([]);
-      setText("");
+      setText('');
     }
   };
 
@@ -62,7 +60,7 @@ const ImageBot = () => {
 
     setWaitAnswer((prev) => !prev);
     getImage(text, sizes);
-    setText("");
+    setText('');
   };
 
   const onChange = (e) => {
@@ -70,7 +68,7 @@ const ImageBot = () => {
       target: { value, name },
     } = e;
 
-    if (name === "keyword") {
+    if (name === 'keyword') {
       setText(value);
     }
   };
@@ -91,13 +89,13 @@ const ImageBot = () => {
           <input
             type="text"
             onChange={onChange}
-            value={text || ""}
+            value={text || ''}
             disabled={waitAnswer}
             name="keyword"
             placeholder="키워드를 입력해줄래?"
           />
           <button
-            className={sizes == 256 ? "on" : null}
+            className={sizes == 256 ? 'on' : null}
             type="button"
             name="256"
             onClick={onSize}
@@ -106,7 +104,7 @@ const ImageBot = () => {
             256
           </button>
           <button
-            className={sizes == 512 ? "on" : null}
+            className={sizes == 512 ? 'on' : null}
             type="button"
             name="512"
             onClick={onSize}
@@ -115,7 +113,7 @@ const ImageBot = () => {
             512
           </button>
           <button
-            className={sizes == 1024 ? "on" : null}
+            className={sizes == 1024 ? 'on' : null}
             type="button"
             name="1024"
             onClick={onSize}
@@ -133,10 +131,11 @@ const ImageBot = () => {
             return (
               <li key={id}>
                 <figure>
-                  <img src={url} alt="ai image"></img>
+                  <Image src={url} property width={300} height={300} alt="ai image" />
+                  {/* <img src={url} alt="ai image"></img> */}
                 </figure>
                 <div>
-                  <h3>{title && "제목명 : " + title}</h3>
+                  <h3>{title && '제목명 : ' + title}</h3>
                   <a href={url} download="record_sample" target="_blank">
                     다운로드
                   </a>
