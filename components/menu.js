@@ -23,7 +23,7 @@ export default function home() {
     },
     {
       id: 2,
-      title: '지진 정보',
+      title: '지진 속보',
       path: '/earthquake',
       image: {
         url: earthquakeImage,
@@ -43,6 +43,15 @@ export default function home() {
       id: 4,
       title: '방명록 작성',
       path: '/board',
+      image: {
+        url: boardImage,
+        alt: 'board icon',
+      },
+    },
+    {
+      id: 5,
+      title: '전국 미세먼지',
+      path: '/dust',
       image: {
         url: boardImage,
         alt: 'board icon',
