@@ -1,7 +1,7 @@
-import Header from "../components/Header";
-import { Auth } from "../components/Auth";
-import { useContext } from "react";
-import { globalContext } from "../app/layout";
+import Header from '../components/Header';
+import { Auth } from '../components/Auth';
+import { useContext } from 'react';
+import { globalContext } from '../app/layout';
 
 const Router = ({ children }) => {
   const { isLoggedIn } = useContext(globalContext);

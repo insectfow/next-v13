@@ -1,5 +1,5 @@
 .earthquake-page {
-  margin-top: 30px;
+  margin-top: 30px !important;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -55,7 +55,7 @@
         }
         > em::after {
           position: absolute;
-          content: "";
+          content: '';
           width: 2px;
           height: 80%;
           top: 50%;

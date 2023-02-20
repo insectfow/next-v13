@@ -1,10 +1,12 @@
-"use client";
-import Menu from "../components/menu";
-
+'use client';
+import Menu from '../components/menu';
 export default function home() {
   return (
-    <div className="container">
-      <Menu></Menu>
-    </div>
+    <>
+      <title>Home - D.ach</title>
+      <div className="container">
+        <Menu></Menu>
+      </div>
+    </>
   );
 }

@@ -73,29 +73,32 @@ export default function board() {
   }, []);
 
   return (
-    <div className="container board-page">
-      <h3>방명록을 남겨보아요</h3>
+    <>
+      <title>Board - D.ach</title>
+      <div className="container board-page">
+        <h3>방명록을 남겨보아요</h3>
 
-      <form onSubmit={onSubmit}>
-        <input placeholder="입력해주세요" onChange={onChange} />
-        <button type="submit">문의하기</button>
-        {error && <p>{error}</p>}
-      </form>
+        <form onSubmit={onSubmit}>
+          <input placeholder="입력해주세요" onChange={onChange} />
+          <button type="submit">문의하기</button>
+          {error && <p>{error}</p>}
+        </form>
 
-      <ul>
-        {commitList.map(({ id, commit, createdAt, displayName }) => {
-          return (
-            <li key={id}>
-              <ul>
-                <li className="nikname">{displayName}</li>
-                <li className="time">{createdAt}</li>
+        <ul>
+          {commitList.map(({ id, commit, createdAt, displayName }) => {
+            return (
+              <li key={id}>
+                <ul>
+                  <li className="nikname">{displayName}</li>
+                  <li className="time">{createdAt}</li>
 
-                <li className="commit">{commit}</li>
-              </ul>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+                  <li className="commit">{commit}</li>
+                </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
   );
 }

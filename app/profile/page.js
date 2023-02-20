@@ -106,41 +106,44 @@ const profile = () => {
   };
 
   return (
-    <div className="container profile-page">
-      <h3 className="title">프로필 페이지</h3>
-      <form onSubmit={onSubmit} className="profile-form">
-        <div className="profile-image-fix-box">
-          <input type="file" accept="image/*" ref={fileUploadRef} onChange={onFileChange} />
-          <div className="image-box">
-            <button onClick={fileUploadClick}>
-              <Image src={uploadImage} width={16} height={16} alt="upload image" />
-            </button>
-            <figure onClick={fileUploadClick}>
-              <Image
-                priority
-                src={photoURL ? photoURL : userObj.photoURL}
-                width={120}
-                height={120}
-                alt="profile image"
-              />
-            </figure>
+    <>
+      <title>Profile - D.ach</title>
+      <div className="container profile-page">
+        <h3 className="title">프로필 페이지</h3>
+        <form onSubmit={onSubmit} className="profile-form">
+          <div className="profile-image-fix-box">
+            <input type="file" accept="image/*" ref={fileUploadRef} onChange={onFileChange} />
+            <div className="image-box">
+              <button onClick={fileUploadClick}>
+                <Image src={uploadImage} width={16} height={16} alt="upload image" />
+              </button>
+              <figure onClick={fileUploadClick}>
+                <Image
+                  priority
+                  src={photoURL ? photoURL : userObj.photoURL}
+                  width={120}
+                  height={120}
+                  alt="profile image"
+                />
+              </figure>
+            </div>
           </div>
-        </div>
-        <label>닉네임</label>
-        <input
-          className="profile-input"
-          type="text"
-          placeholder="Display name"
-          value={newDisplayName}
-          onChange={onChange}
-        />
-        <input type="submit" value="Update Profile" />
-        {error ? <span>{error}</span> : null}
-      </form>
-      <button className="logout-btn" onClick={onSignOut}>
-        로그아웃
-      </button>
-    </div>
+          <label>닉네임</label>
+          <input
+            className="profile-input"
+            type="text"
+            placeholder="Display name"
+            value={newDisplayName}
+            onChange={onChange}
+          />
+          <input type="submit" value="Update Profile" />
+          {error ? <span>{error}</span> : null}
+        </form>
+        <button className="logout-btn" onClick={onSignOut}>
+          로그아웃
+        </button>
+      </div>
+    </>
   );
 };
 

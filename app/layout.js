@@ -5,7 +5,6 @@ import { authService } from '../lib/firebase';
 import Router from '../components/Router';
 import '../styles/global.css';
 import Loading from './Loading';
-
 import { onAuthStateChanged } from 'firebase/auth';
 
 export const globalContext = createContext({});

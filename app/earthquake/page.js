@@ -3,6 +3,7 @@
 import axios from 'axios';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
@@ -45,69 +46,73 @@ export default function page() {
   }, []);
 
   return (
-    <div className="container earthquake-page">
-      <h3>지진 속보</h3>
-      <ul className="earthquake-list-box">
-        {itemList.length > 0 ? (
-          itemList.map(({ img, rem, inT, mt, loc, stnId, lat, lon, tmEqk, dep }) => {
-            return (
-              <li key={stnId}>
-                <div className="image-box">
-                  {img ? (
-                    // <img src={img} alt="지진 위치 이미지"></img>
-                    <Image width={300} height={300} priority src={img} alt="지진 위치 이미지" />
-                  ) : (
-                    <Image width={300} height={300} src={noImage} alt="이미지 없음 이미지" />
-                  )}
-                </div>
-                <ul className="info-box">
-                  <li>
-                    <em>규모</em>
-                    <span>{mt ? mt : '-'}</span>
-                  </li>
-                  <li>
-                    <em>진앙지</em>
-                    <span>{loc ? loc : '-'}</span>
-                  </li>
-                  <li>
-                    <em>참고사항</em>
-                    <span>{rem ? rem : '-'}</span>
-                  </li>
-                  <li>
-                    <em>진앙 시각</em>
-                    <span>
-                      {tmEqk
-                        ? dayjs(String(tmEqk), 'YYYYMMDDHHmmss').format(
-                            'YYYY. MM. DD. HH시 mm분 ss초',
-                          )
-                        : '-'}
-                    </span>
-                  </li>
-                  <li>
-                    <em>위도</em>
-                    <span>{lat ? lat : '-'}</span>
-                  </li>
-                  <li>
-                    <em>경도</em>
-                    <span>{lon ? lon : '-'}</span>
-                  </li>
-                  <li>
-                    <em>발생깊이</em>
-                    <span>{dep ? dep + 'km' : '-'}</span>
-                  </li>
-                  <li>
-                    <em>진도</em>
-                    <span>{inT ? inT : '-'}</span>
-                  </li>
-                </ul>
-              </li>
-            );
-          })
-        ) : (
-          <Loading />
-        )}
-      </ul>
-      {error && <>{error}</>}
-    </div>
+    <>
+      <title>earthquake - D.ach</title>
+      <div className="container earthquake-page">
+        <h3>지진 속보</h3>
+        <ul className="earthquake-list-box">
+          {itemList.length > 0 ? (
+            itemList.map(({ img, rem, inT, mt, loc, stnId, lat, lon, tmEqk, dep }) => {
+              return (
+                <li key={uuidv4()}>
+                  <div className="image-box">
+                    {img ? (
+                      // <img src={img} alt="지진 위치 이미지"></img>
+                      <Image width={300} height={300} priority src={img} alt="지진 위치 이미지" />
+                    ) : (
+                      <Image width={300} height={300} src={noImage} alt="이미지 없음 이미지" />
+                    )}
+                  </div>
+                  <ul className="info-box">
+                    {stnId}
+                    <li>
+                      <em>규모</em>
+                      <span>{mt ? mt : '-'}</span>
+                    </li>
+                    <li>
+                      <em>진앙지</em>
+                      <span>{loc ? loc : '-'}</span>
+                    </li>
+                    <li>
+                      <em>참고사항</em>
+                      <span>{rem ? rem : '-'}</span>
+                    </li>
+                    <li>
+                      <em>진앙 시각</em>
+                      <span>
+                        {tmEqk
+                          ? dayjs(String(tmEqk), 'YYYYMMDDHHmmss').format(
+                              'YYYY. MM. DD. HH시 mm분 ss초',
+                            )
+                          : '-'}
+                      </span>
+                    </li>
+                    <li>
+                      <em>위도</em>
+                      <span>{lat ? lat : '-'}</span>
+                    </li>
+                    <li>
+                      <em>경도</em>
+                      <span>{lon ? lon : '-'}</span>
+                    </li>
+                    <li>
+                      <em>발생깊이</em>
+                      <span>{dep ? dep + 'km' : '-'}</span>
+                    </li>
+                    <li>
+                      <em>진도</em>
+                      <span>{inT ? inT : '-'}</span>
+                    </li>
+                  </ul>
+                </li>
+              );
+            })
+          ) : (
+            <Loading />
+          )}
+        </ul>
+        {error && <>{error}</>}
+      </div>
+    </>
   );
 }
