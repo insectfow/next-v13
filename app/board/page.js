@@ -31,7 +31,7 @@ export default function board() {
       createdAt: dayjs().format('YYYY-MM-DD HH:mm:ss'),
       uid: userObj.uid,
       like: 0,
-      displayName: userObj.displayName,
+      displayName: userObj.displayName ? userObj.displayName : 'user',
     };
 
     try {

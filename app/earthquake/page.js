@@ -13,9 +13,7 @@ import Loading from '../Loading';
 import noImage from '../../public/no-image.svg';
 export default function page() {
   const [itemList, setItemList] = useState([]);
-
   const [error, setError] = useState(null);
-
   useEffect(() => {
     dayjs.locale('ko');
     const getEqk = async () => {
@@ -58,13 +56,12 @@ export default function page() {
                   <div className="image-box">
                     {img ? (
                       // <img src={img} alt="지진 위치 이미지"></img>
-                      <Image width={300} height={300} priority src={img} alt="지진 위치 이미지" />
+                      <Image width={300} height={300} src={img} alt="지진 위치 이미지" />
                     ) : (
                       <Image width={300} height={300} src={noImage} alt="이미지 없음 이미지" />
                     )}
                   </div>
                   <ul className="info-box">
-                    {stnId}
                     <li>
                       <em>규모</em>
                       <span>{mt ? mt : '-'}</span>

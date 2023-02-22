@@ -33,8 +33,8 @@ export default function page() {
 
   const [error, setError] = useState(null);
 
-  const getEqk = async (sidoName) => {
-    const baseUrl = '	http://apis.data.go.kr/B552584/ArpltnStatsSvc/getCtprvnMesureSidoLIst';
+  const getDust = async (sidoName) => {
+    const baseUrl = '	https://apis.data.go.kr/B552584/ArpltnStatsSvc/getCtprvnMesureSidoLIst';
 
     if (!sidoName) {
       return;
@@ -52,12 +52,32 @@ export default function page() {
 
       const res = await axios.get(baseUrl + queryParams);
 
-      setItemList(res.data.response.body.items);
+      const items = res.data.response.body.items;
+
+      setItemList(items);
 
       setIsLoading(false);
     } catch (error) {
       setError(error.code);
       setIsLoading(false);
+    }
+  };
+
+  const checkDust = (pm10Value, pm25Value) => {
+    const sum = pm10Value + pm25Value;
+
+    if (sum >= 0 || sum <= 50) {
+      console.log('미세먼지 좋음');
+      return 'dust0';
+    } else if (sum > 50 || sum <= 125) {
+      console.log('미세먼지 보통');
+      return 'dust1';
+    } else if (sum > 125 || sum <= 250) {
+      console.log('미세먼지 나쁨');
+      return 'dust2';
+    } else {
+      console.log('미세먼지 매우 나쁨');
+      return 'dust3';
     }
   };
 
@@ -69,12 +89,12 @@ export default function page() {
     setIsLoading(true);
 
     setSelect(name);
-    getEqk(name);
+    getDust(name);
   };
 
   useEffect(() => {
     setIsLoading(true);
-    getEqk(select);
+    getDust(select);
   }, []);
 
   return (
@@ -102,7 +122,7 @@ export default function page() {
           {itemList.map(
             ({ cityName, no2Value, coValue, pm10Value, pm25Value, so2Value, o3Value }) => {
               return (
-                <li key={uuidv4()}>
+                <li key={uuidv4()} className={checkDust(pm10Value, pm25Value)}>
                   <ul className="info-box">
                     <li>
                       <em>지역</em>
