@@ -6,8 +6,6 @@ import { signOut, updateProfile } from 'firebase/auth';
 
 import { authService, dbService, storageService } from '../../lib/firebase';
 
-import { globalContext } from '../layout';
-
 import '../../styles/profile.scss';
 
 import { collection, query, where, getDocs } from 'firebase/firestore';
@@ -19,12 +17,18 @@ import imageCompression from 'browser-image-compression';
 import uploadImage from '../../public/upload.svg';
 import Image from 'next/image';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { updateUserInfo } from '../../store/user/index';
+
 const profile = () => {
-  const { userObj, refreshUser } = useContext(globalContext);
+  const userObj = useSelector((state) => state.user.userInfo.payload);
+
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   const [photoURL, setPhotoURL] = useState('');
   const [error, setError] = useState(null);
   const fileUploadRef = useRef();
+
+  const dispatch = useDispatch();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -45,12 +49,10 @@ const profile = () => {
         const attachmentUrl = await getDownloadURL(response.ref);
 
         updateObj = { ...updateObj, photoURL: attachmentUrl };
-
-        console.log(updateObj, 'ss');
       }
 
       await updateProfile(authService.currentUser, updateObj);
-      refreshUser();
+      dispatch(updateUserInfo(updateObj));
     } catch (error) {
       setError(error.message);
     }
