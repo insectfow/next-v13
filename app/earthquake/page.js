@@ -56,7 +56,13 @@ export default function page() {
                   <div className="image-box">
                     {img ? (
                       // <img src={img} alt="지진 위치 이미지"></img>
-                      <Image width={300} height={300} src={img} alt="지진 위치 이미지" />
+                      <Image
+                        width={300}
+                        height={300}
+                        src={img}
+                        alt="지진 위치 이미지"
+                        loading="lazy"
+                      />
                     ) : (
                       <Image width={300} height={300} src={noImage} alt="이미지 없음 이미지" />
                     )}
