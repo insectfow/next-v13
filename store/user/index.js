@@ -9,7 +9,7 @@ export const userSlice = createSlice({
   },
   reducers: {
     getUserInfo: (state, action) => {
-      state.userInfo = action;
+      state.userInfo = action.payload;
     },
     updateLoggedIn: (state, action) => {
       state.isLoggedIn = action;
@@ -21,8 +21,7 @@ export const userSlice = createSlice({
     updateUserInfo: (state, action) => {
       state.userInfo = {
         ...state.userInfo,
-        displayName: action.payload.displayName,
-        photoUrl: action.payload.photoUrl,
+        ...action.payload,
       };
     },
   },

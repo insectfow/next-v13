@@ -21,8 +21,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateUserInfo } from '../../store/user/index';
 
 const profile = () => {
-  const userObj = useSelector((state) => state.user.userInfo.payload);
-
+  const userObj = useSelector((state) => state.user.userInfo);
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   const [photoURL, setPhotoURL] = useState('');
   const [error, setError] = useState(null);

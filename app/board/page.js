@@ -12,8 +12,11 @@ import { globalContext } from '../layout';
 
 import AlertModal from '../../components/modals/AlertModal';
 
+import { useSelector } from 'react-redux';
+
 export default function board() {
-  const { userObj } = useContext(globalContext);
+  const userObj = useSelector((state) => state.user.userInfo);
+
   const [commit, setCommit] = useState('');
   const [error, setError] = useState(null);
   const [isShow, setIsShow] = useState(false);
@@ -74,7 +77,7 @@ export default function board() {
       <title>Board - D.ach</title>
       <div className="container board-page">
         <h3>방명록을 남겨보아요</h3>
-        <form onSubmit={onSubmit}>
+        <form className="board-form" onSubmit={onSubmit}>
           <input placeholder="입력해주세요" value={commit} onChange={onChange} />
           <button type="submit">남기기</button>
           {error && <p>{error}</p>}
@@ -99,7 +102,7 @@ export default function board() {
       {isShow && (
         <AlertModal
           className={isShow ? 'on' : 'hide'}
-          modalInfo={'남기시겠습니까?'}
+          modalInfo={'방명록을 남기시겠습니까?'}
           toggleModal={toggleModal}
           goCommit={goCommit}
         />

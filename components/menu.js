@@ -10,6 +10,7 @@ import earthquakeImage from '../public/earthquake.svg';
 import imageImage from '../public/image.svg';
 import boardImage from '../public/board.svg';
 import cloudImage from '../public/cloud.svg';
+import fullpageImage from '../public/fullpage.svg';
 
 export default function home() {
   const [menuList, setMenuList] = useState([
@@ -63,8 +64,8 @@ export default function home() {
       title: 'Full Page',
       path: '/fullpage',
       image: {
-        url: cloudImage,
-        alt: 'dust icon',
+        url: fullpageImage,
+        alt: 'fullpage icon',
       },
     },
   ]);
