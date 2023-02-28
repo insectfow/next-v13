@@ -1,3 +1,4 @@
+// 테스트
 import { configureStore } from '@reduxjs/toolkit';
 import userInfoSlice from '../store/user/index';
 export default configureStore({
