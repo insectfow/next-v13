@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { signOut, updateProfile } from 'firebase/auth';
 
@@ -8,7 +8,7 @@ import { authService, dbService, storageService } from '../../lib/firebase';
 
 import '../../styles/profile.scss';
 
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, onSnapshot, orderBy, where, limit } from 'firebase/firestore';
 
 import { ref, uploadString, getDownloadURL } from 'firebase/storage';
 
@@ -19,6 +19,7 @@ import Image from 'next/image';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUserInfo } from '../../store/user/index';
+import BoardList from '../../components/board/boardList';
 
 const profile = () => {
   const userObj = useSelector((state) => state.user.userInfo);
@@ -28,6 +29,8 @@ const profile = () => {
   const fileUploadRef = useRef();
 
   const dispatch = useDispatch();
+
+  const [commitList, setCommitList] = useState([]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -106,6 +109,19 @@ const profile = () => {
       });
   };
 
+  useEffect(() => {
+    const q = query(
+      collection(dbService, 'board'),
+      orderBy('createdAt', 'desc'),
+      where('uid', '==', userObj.uid),
+      limit(5),
+    );
+    onSnapshot(q, (snapShot) => {
+      const dweetArr = snapShot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setCommitList(dweetArr);
+    });
+  }, []);
+
   return (
     <>
       <title>Profile - D.ach</title>
@@ -140,6 +156,7 @@ const profile = () => {
           <input type="submit" value="Update Profile" />
           {error ? <span>{error}</span> : null}
         </form>
+        <BoardList commitList={commitList} />
         <button className="logout-btn" onClick={onSignOut}>
           로그아웃
         </button>

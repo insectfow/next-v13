@@ -7,12 +7,10 @@ import { dbService } from '../../lib/firebase';
 import { collection, addDoc, query, onSnapshot, orderBy } from 'firebase/firestore';
 import dayjs from 'dayjs';
 
-import { useContext } from 'react';
-import { globalContext } from '../layout';
-
 import AlertModal from '../../components/modals/AlertModal';
 
 import { useSelector } from 'react-redux';
+import BoardList from '../../components/board/boardList';
 
 export default function board() {
   const userObj = useSelector((state) => state.user.userInfo);
@@ -82,22 +80,7 @@ export default function board() {
           <button type="submit">남기기</button>
           {error && <p>{error}</p>}
         </form>
-        <ul>
-          {commitList.map(({ id, commit, createdAt, displayName, uid }) => (
-            <li key={`commit${id}`}>
-              <ul>
-                <li className="nikname">{displayName ? displayName : 'user'}</li>
-                <li className="time">{createdAt}</li>
-                <li className="commit">{commit}</li>
-                {/* {uid === userObj.uid ? (
-                  <li className="buttons">
-                    <button>수정하기</button>
-                  </li>
-                ) : null} */}
-              </ul>
-            </li>
-          ))}
-        </ul>
+        <BoardList commitList={commitList} />
       </div>
       {isShow && (
         <AlertModal
