@@ -58,6 +58,15 @@ export default function home() {
         alt: 'dust icon',
       },
     },
+    {
+      id: 6,
+      title: 'Full Page',
+      path: '/fullpage',
+      image: {
+        url: cloudImage,
+        alt: 'dust icon',
+      },
+    },
   ]);
   return (
     <>

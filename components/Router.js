@@ -4,6 +4,8 @@ import { Auth } from '../components/Auth';
 import { onAuthStateChanged } from 'firebase/auth';
 import { authService } from '../lib/firebase';
 
+import { usePathname } from 'next/navigation';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserInfo, updateLoggedIn, updateInits } from '../store/user/index';
 
@@ -11,6 +13,8 @@ import { useEffect } from 'react';
 import Loading from '../app/Loading';
 
 const Router = ({ children }) => {
+  const pathName = usePathname();
+
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn.payload);
   const isInit = useSelector((state) => state.user.isInit.payload);
 
@@ -41,7 +45,7 @@ const Router = ({ children }) => {
       <>
         {isInit ? (
           <>
-            {isLoggedIn && <Header />}
+            {pathName != '/fullpage' && isLoggedIn && <Header />}
             {isLoggedIn ? children : <Auth />}
           </>
         ) : (
