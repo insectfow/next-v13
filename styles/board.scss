@@ -1,5 +1,9 @@
 .board-page {
   margin: 30px auto !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   > h3 {
     margin-bottom: 20px;
   }
@@ -15,6 +19,8 @@
     display: flex;
     gap: 10px;
     background: #fff;
+    width: 100%;
+    max-width: 400px;
 
     > input {
       width: 100%;

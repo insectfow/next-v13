@@ -68,6 +68,15 @@ export default function home() {
         alt: 'fullpage icon',
       },
     },
+    {
+      id: 7,
+      title: 'MixMa',
+      path: '/mixma',
+      image: {
+        url: fullpageImage,
+        alt: 'fullpage icon',
+      },
+    },
   ]);
   return (
     <>
