@@ -35,6 +35,7 @@
       padding: 15px;
       box-sizing: border-box;
       width: 100%;
+
       > li {
         display: flex;
         line-height: 1.5;
@@ -62,6 +63,7 @@
       }
     }
     > button {
+      border: none;
     }
     > button.on {
       color: red;

@@ -28,6 +28,9 @@
   }
   > li:hover {
     transform: scale(1.2);
+    img {
+      animation: rotate 0.5s ease-in-out 0.1s 1;
+    }
   }
 }
 
@@ -36,5 +39,14 @@
     > li {
       width: calc(50% - 5px);
     }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  0% {
+    transform: rotate(-360deg);
   }
 }

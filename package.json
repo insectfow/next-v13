@@ -6,6 +6,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^13.2.3",
     "@reduxjs/toolkit": "^1.9.3",
     "@vercel/edge-config": "^0.1.1",
     "browser-image-compression": "^2.0.0",

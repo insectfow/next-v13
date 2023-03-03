@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 import AlertModal from '../../components/modals/AlertModal';
 
 import { useSelector } from 'react-redux';
-import BoardList from '../../components/board/boardList';
+import BoardList from '../../components/board/BoardList';
 
 export default function board() {
   const userObj = useSelector((state) => state.user.userInfo);
@@ -73,8 +73,10 @@ export default function board() {
   return (
     <>
       <title>Board - D.ach</title>
-      <div className="container board-page">
+      <div className="container">
         <h3>방명록을 남겨보아요</h3>
+        <p>인사말이나 건의사항 남겨주세요 반영 해보도록 하겠습니다~</p>
+
         <form className="board-form" onSubmit={onSubmit}>
           <input placeholder="입력해주세요" value={commit} onChange={onChange} />
           <button type="submit">남기기</button>

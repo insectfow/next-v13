@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import LogoImage from "../public/faviconB.svg";
+import LogoImage from '../public/faviconB.svg';
 
 const Header = () => {
   const [navList, setNavList] = useState([
     {
-      title: "Tistory",
-      path: "https://dev-ach.tistory.com/",
+      title: 'Tistory',
+      path: 'https://dev-ach.tistory.com/',
     },
     {
-      title: "Profile",
-      path: "/profile",
+      title: 'Profile',
+      path: '/profile',
     },
   ]);
 
   return (
     <header className="header">
       <div className="container flex-header">
-        <h3 className="header-logo">
+        <h2 className="header-logo">
           <Link href="/">
             <Image
               width={60}
@@ -33,7 +33,7 @@ const Header = () => {
               alt="DH logo"
             ></Image>
           </Link>
-        </h3>
+        </h2>
         <nav className="header-nav">
           {navList.map(({ title, path }) => {
             return (

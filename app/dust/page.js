@@ -67,16 +67,12 @@ export default function page() {
     const sum = pm10Value + pm25Value;
 
     if (sum >= 0 || sum <= 50) {
-      console.log('미세먼지 좋음');
       return 'dust0';
     } else if (sum > 50 || sum <= 125) {
-      console.log('미세먼지 보통');
       return 'dust1';
     } else if (sum > 125 || sum <= 250) {
-      console.log('미세먼지 나쁨');
       return 'dust2';
     } else {
-      console.log('미세먼지 매우 나쁨');
       return 'dust3';
     }
   };
@@ -100,8 +96,14 @@ export default function page() {
   return (
     <>
       <title>Dust - D.ach</title>
-      <div className="container dust-page">
-        <h3>전국 미세먼지 실시간 정보</h3>
+      <div className="container">
+        <h3>미세먼지 실시간 정보</h3>
+        <p>
+          OpenAPI에서 전국 대기 정보 API를 가지고 봄철 미세먼지를 최근 1시간 기준으로 대기정보를
+          보여준다. 미세먼지가 매우 좋으면 파란색, 좋으면 초록색, 나쁘면 노란색, 매우 나쁘면
+          빨간색으로 표기된다.
+        </p>
+
         <ul className="dust-list-box">
           {location.map((val) => {
             return (

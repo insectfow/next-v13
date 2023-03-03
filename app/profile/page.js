@@ -19,7 +19,7 @@ import Image from 'next/image';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUserInfo } from '../../store/user/index';
-import BoardList from '../../components/board/boardList';
+import BoardList from '../../components/board/BoardList';
 
 const profile = () => {
   const userObj = useSelector((state) => state.user.userInfo);
@@ -114,7 +114,6 @@ const profile = () => {
       collection(dbService, 'board'),
       orderBy('createdAt', 'desc'),
       where('uid', '==', userObj.uid),
-      limit(5),
     );
     onSnapshot(q, (snapShot) => {
       const dweetArr = snapShot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
@@ -127,6 +126,10 @@ const profile = () => {
       <title>Profile - D.ach</title>
       <div className="container profile-page">
         <h3 className="title">프로필 페이지</h3>
+        <p>
+          로그인한 회원의 닉네임, 프로필 이미지를 수정 및 저장 기능과 내가 단 방명록 데이터를
+          불러옵니다.
+        </p>
         <form onSubmit={onSubmit} className="profile-form">
           <div className="profile-image-fix-box">
             <input type="file" accept="image/*" ref={fileUploadRef} onChange={onFileChange} />

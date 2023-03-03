@@ -48,6 +48,10 @@ export default function page() {
       <title>earthquake - D.ach</title>
       <div className="container earthquake-page">
         <h3>지진 속보</h3>
+        <p>
+          OpenAPI에서 제공하는 지진 데이터를 가지고 최근 3일 안에 일어난 지진들을 최신순으로
+          표현합니다.
+        </p>
         <ul className="earthquake-list-box">
           {itemList.length > 0 ? (
             itemList.map(({ img, rem, inT, mt, loc, stnId, lat, lon, tmEqk, dep }) => {

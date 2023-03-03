@@ -94,33 +94,37 @@ const ImageBot = () => {
             name="keyword"
             placeholder="키워드를 입력해줄래?"
           />
-          <button
-            className={sizes == 256 ? 'on' : null}
-            type="button"
-            name="256"
-            onClick={onSize}
-            disabled={waitAnswer}
-          >
-            256
-          </button>
-          <button
-            className={sizes == 512 ? 'on' : null}
-            type="button"
-            name="512"
-            onClick={onSize}
-            disabled={waitAnswer}
-          >
-            512
-          </button>
-          <button
-            className={sizes == 1024 ? 'on' : null}
-            type="button"
-            name="1024"
-            onClick={onSize}
-            disabled={waitAnswer}
-          >
-            1024
-          </button>
+          <div>
+            <h4>이미지 사이즈</h4>
+            <button
+              className={sizes == 256 ? 'on' : null}
+              type="button"
+              name="256"
+              onClick={onSize}
+              disabled={waitAnswer}
+            >
+              256x256
+            </button>
+            <button
+              className={sizes == 512 ? 'on' : null}
+              type="button"
+              name="512"
+              onClick={onSize}
+              disabled={waitAnswer}
+            >
+              512x512
+            </button>
+            <button
+              className={sizes == 1024 ? 'on' : null}
+              type="button"
+              name="1024"
+              onClick={onSize}
+              disabled={waitAnswer}
+            >
+              1024x1024
+            </button>
+          </div>
+
           <button type="submit" disabled={waitAnswer}>
             이미지 생성
           </button>
@@ -136,9 +140,9 @@ const ImageBot = () => {
                 </figure>
                 <div>
                   <h3>{title && '제목명 : ' + title}</h3>
-                  <a href={url} download="record_sample" target="_blank">
+                  {/* <a href={url} download="record_sample" target="_blank">
                     다운로드
-                  </a>
+                  </a> */}
                 </div>
               </li>
             );

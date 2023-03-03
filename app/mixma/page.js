@@ -184,6 +184,8 @@ export default function MixPage() {
 
   return (
     <main className="container">
+      <h3>믹스마스터 믹스 족보</h3>
+      <p>믹스마스터온라인 믹스법 족보 기능 구현(미완성)</p>
       {/* <MixMaForm /> */}
       {/* <input
         type="text"
@@ -230,12 +232,18 @@ export default function MixPage() {
                   <li>선공유무 : {anger ? '선공' : '비선공'}</li>
                   <li>공격범위 : {range ? range : '-'}</li>
                   <li>득코가능 : {gain ? '득코가능' : '득코불가'}</li>
-                  <li>
-                    {mixList.map((value, index) => {
-                      return <span key={`mixList-${index}`}>{value}</span>;
-                    })}
-                  </li>
-                  <li>{materialList}</li>
+                  {mixList.length > 0 && (
+                    <>
+                      <p>믹스법 :</p>
+                      <li className="mix-list">
+                        {mixList.map((value, index) => {
+                          return <span key={`mixList-${index}`}>{value}</span>;
+                        })}
+                      </li>
+                    </>
+                  )}
+
+                  <li>재료로 쓰여지는 헨치: {materialList.length > 0 ? materialList : '-'}</li>
                 </ul>
               </li>
             );

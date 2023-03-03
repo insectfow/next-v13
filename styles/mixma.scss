@@ -47,5 +47,27 @@
     > li {
       margin-bottom: 5px;
     }
+    > p {
+      margin-bottom: 5px;
+    }
+    .mix-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border: 2px solid #eaeaea;
+      background: #fff;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      > span {
+        width: 100%;
+        border-bottom: 2px solid #eaeaea;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+      > span:last-child {
+        border-bottom: none;
+      }
+    }
   }
 }

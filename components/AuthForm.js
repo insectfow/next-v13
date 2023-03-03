@@ -127,7 +127,7 @@ const AuthForm = () => {
 
   return (
     <>
-      <h3 className="auth-title">Dach {loginToggle ? 'Login' : 'Join'}</h3>
+      <h2 className="auth-title">Dach {loginToggle ? 'Login' : 'Join'}</h2>
       <form className="auth-form" onSubmit={onSubmit}>
         <div className="auth-input-box">
           <input type="email" placeholder="email" name="email" onChange={onChange} />
