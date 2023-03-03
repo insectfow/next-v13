@@ -128,13 +128,11 @@ export default function MixPage() {
 
     obj.mixList[0].forEach((element, idx) => {
       const split = element.split('/');
-      console.log(split);
       data.insert(idx);
     });
     data.insert(2, '2');
     data.insert(4, '3');
     data.insert(5, '5');
-    console.log(data);
   };
 
   const searchData = (name) => {

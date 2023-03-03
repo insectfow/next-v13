@@ -79,7 +79,7 @@ const ImageBot = () => {
     } = e;
     setSizes(name);
 
-    console.log(sizes);
+    // console.log(sizes);
   };
   return (
     <>

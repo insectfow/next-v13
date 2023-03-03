@@ -117,7 +117,7 @@ const AuthForm = () => {
   };
 
   const onToggleShowPw = (e) => {
-    console.log(e);
+    // console.log(e);
     setIsEyes((prev) => !prev);
   };
 

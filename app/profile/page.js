@@ -101,10 +101,10 @@ const profile = () => {
     signOut(authService)
       .then(() => {
         // Sign-out successful.
-        console.log('로그아웃 성공');
+        // console.log('로그아웃 성공');
       })
       .catch((error) => {
-        console.log('로그아웃 실패');
+        // console.log('로그아웃 실패');
         // An error happened.
       });
   };
