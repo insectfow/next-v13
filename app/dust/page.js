@@ -64,13 +64,14 @@ export default function page() {
   };
 
   const checkDust = (pm10Value, pm25Value) => {
-    const sum = pm10Value + pm25Value;
+    const sum = Number(pm10Value) + Number(pm25Value);
 
-    if (sum >= 0 || sum <= 50) {
+    console.log(sum, pm10Value, pm25Value);
+    if (sum > 0 && sum <= 50) {
       return 'dust0';
-    } else if (sum > 50 || sum <= 125) {
+    } else if (sum > 50 && sum <= 125) {
       return 'dust1';
-    } else if (sum > 125 || sum <= 250) {
+    } else if (sum > 125 && sum <= 250) {
       return 'dust2';
     } else {
       return 'dust3';

@@ -35,7 +35,7 @@ export default function MixMaForm() {
       anger: anger, // 필수
       range: range, // 필수
       gain: gain, // 필수
-      mixList: split(mixList),
+      mixList: mixList !== '' ? split(mixList) : [],
       materialList: materialList,
       createdAt: Timestamp.fromDate(new Date()), // 필수
     };
