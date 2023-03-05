@@ -84,7 +84,7 @@ export default function home() {
         {menuList.map(({ id, title, path, image }) => {
           return (
             <li key={id}>
-              <Link href={path}>
+              <Link href={path} title={title}>
                 <Image width={36} height={36} src={image.url} alt={image.alt}></Image>
                 {title}
               </Link>
