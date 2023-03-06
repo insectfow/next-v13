@@ -65,8 +65,6 @@ export default function page() {
 
   const checkDust = (pm10Value, pm25Value) => {
     const sum = Number(pm10Value) + Number(pm25Value);
-
-    console.log(sum, pm10Value, pm25Value);
     if (sum > 0 && sum <= 50) {
       return 'dust0';
     } else if (sum > 50 && sum <= 125) {

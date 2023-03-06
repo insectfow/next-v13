@@ -61,8 +61,8 @@ export default function page() {
                     {img ? (
                       // <img src={img} alt="지진 위치 이미지"></img>
                       <Image
-                        width={300}
-                        height={300}
+                        width={384}
+                        height={329}
                         src={img}
                         alt="지진 위치 이미지"
                         loading="lazy"

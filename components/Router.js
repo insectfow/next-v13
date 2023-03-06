@@ -45,7 +45,7 @@ const Router = ({ children }) => {
       <>
         {isInit ? (
           <>
-            {pathName != '/fullpage' && isLoggedIn && <Header />}
+            {pathName != '/fullpage' && pathName != '/design' && isLoggedIn && <Header />}
             {isLoggedIn ? children : <Auth />}
           </>
         ) : (

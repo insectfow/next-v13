@@ -9,9 +9,6 @@ const font = Inter({
   subsets: ['latin'],
   weight: ['400', '700'],
 });
-
-<html></html>;
-
 import store from '../store/index';
 import { Provider } from 'react-redux';
 
