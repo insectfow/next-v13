@@ -23,8 +23,11 @@ import BoardList from '../../components/board/BoardList';
 
 const profile = () => {
   const userObj = useSelector((state) => state.user.userInfo);
-  const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
-  const [photoURL, setPhotoURL] = useState('');
+
+  const [newDisplayName, setNewDisplayName] = useState(
+    userObj.displayName ? userObj.displayName : '',
+  );
+  const [photoURL, setPhotoURL] = useState(userObj.photoURL);
   const [error, setError] = useState(null);
   const fileUploadRef = useRef();
 
@@ -47,7 +50,7 @@ const profile = () => {
 
       if (photoURL !== '') {
         const attachmentRef = ref(storageService, `${userObj.uid}/profile-image`);
-        const response = await uploadString(attachmentRef, photoURL, 'data_url');
+        const response = await uploadString(attachmentRef, String(photoURL), 'data_url');
         const attachmentUrl = await getDownloadURL(response.ref);
 
         updateObj = { ...updateObj, photoURL: attachmentUrl };
@@ -138,13 +141,15 @@ const profile = () => {
                 <Image src={uploadImage} width={16} height={16} alt="upload image" />
               </button>
               <figure onClick={fileUploadClick}>
-                <Image
-                  priority
-                  src={photoURL ? photoURL : userObj.photoURL}
-                  width={120}
-                  height={120}
-                  alt="profile image"
-                />
+                {photoURL && (
+                  <Image
+                    priority
+                    src={photoURL !== '' ? photoURL : userObj.photoURL}
+                    width={120}
+                    height={120}
+                    alt="profile image"
+                  />
+                )}
               </figure>
             </div>
           </div>
