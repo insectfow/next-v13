@@ -21,6 +21,7 @@ import Section2Contents9 from '../../public/design/image9.jpg';
 import Section50 from '../../public/design/section50.jpg';
 import Section51 from '../../public/design/section51.jpg';
 import Section3Image from '../../public/design/section3.jpg';
+import Count from '../../components/Count';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Page() {
@@ -83,7 +84,26 @@ export default function Page() {
           </div>
           <div className={styles.sdHeaderContainer}>
             <nav className={styles.sdHeaderContainerHashNav}>
-              <ul>
+              <Count
+                list={[
+                  {
+                    title: '#A_Sense_of_Color',
+                  },
+                  {
+                    title: '#Expanding_the_World',
+                  },
+                  {
+                    title: '#Inspire_for_the_Better',
+                  },
+                  {
+                    title: '#Living_Smarter',
+                  },
+                  {
+                    title: '#A_Sense_of_Color',
+                  },
+                ]}
+              ></Count>
+              {/* <ul>
                 <li>
                   <Link href="/design" title="A_Sense_of_Color">
                     #A_Sense_of_Color
@@ -109,7 +129,7 @@ export default function Page() {
                     #A_Sense_of_Color
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
             </nav>
             <div className={styles.sdHeaderContainerBtnNav}>
               <button title="search">

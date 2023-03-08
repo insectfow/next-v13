@@ -1,0 +1,26 @@
+.list {
+  position: relative;
+  //   border: 1px solid #000;
+  overflow: hidden;
+  width: 200px;
+  height: 27px;
+  padding: 0 10px;
+  > li {
+    width: 100%;
+    position: absolute;
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    top: -50px;
+    left: -20px;
+    // display: none;
+    > a {
+      width: 100%;
+    }
+  }
+
+  > li.active {
+    opacity: 1;
+    top: 0;
+    z-index: 999;
+  }
+}

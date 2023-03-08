@@ -78,8 +78,6 @@ const ImageBot = () => {
       target: { name },
     } = e;
     setSizes(name);
-
-    // console.log(sizes);
   };
   return (
     <>
@@ -136,13 +134,9 @@ const ImageBot = () => {
               <li key={id}>
                 <figure>
                   <Image src={url} property width={300} height={300} alt="ai image" />
-                  {/* <img src={url} alt="ai image"></img> */}
                 </figure>
                 <div>
                   <h3>{title && '제목명 : ' + title}</h3>
-                  {/* <a href={url} download="record_sample" target="_blank">
-                    다운로드
-                  </a> */}
                 </div>
               </li>
             );

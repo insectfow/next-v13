@@ -184,8 +184,8 @@ export default function MixPage() {
     <main className="container">
       <h3>믹스마스터 믹스 족보</h3>
       <p>믹스마스터온라인 믹스법 족보 기능 구현(미완성)</p>
-      {/* <MixMaForm /> */}
-      {/* <input
+      <MixMaForm />
+      <input
         type="text"
         placeholder="족보 검색"
         name="search"
@@ -200,24 +200,29 @@ export default function MixPage() {
                 <ul>
                   <li>이름 : {name ? name : '-'}</li>
                   <li>속성 : {property ? property : '-'}</li>
-                  <li>레벨 : {level ? level.min + '~' + level.max : '-'}</li>
+                  <li>레벨 : {level ? level[0] + '~' + level[1] : '-'}</li>
                   <li>서식지 : {habitat ? habitat : '-'}</li>
                   <li>선공유무 : {anger ? '선공' : '비선공'}</li>
                   <li>공격범위 : {range ? range : '-'}</li>
                   <li>득코가능 : {gain ? '득코가능' : '득코불가'}</li>
-                  <li>
-                    {mixList.map((value, index) => {
-                      return <span key={`mixList-${index}`}>{value}</span>;
-                    })}
-                  </li>
+                  {mixList.length > 0 && (
+                    <>
+                      <p>믹스법 :</p>
+                      <li className="mix-list">
+                        {mixList.map((value, index) => {
+                          return <span key={`mixList-${index}`}>{value}</span>;
+                        })}
+                      </li>
+                    </>
+                  )}
                   <li>{materialList}</li>
                 </ul>
               </li>
             );
           },
         )}
-      </ul> */}
-      <ul className="core-list">
+      </ul>{' '}
+      {/* <ul className="core-list">
         {coreList.map(
           ({ id, name, property, level, habitat, anger, range, gain, mixList, materialList }) => {
             return (
@@ -247,7 +252,7 @@ export default function MixPage() {
             );
           },
         )}
-      </ul>
+      </ul> */}
     </main>
   );
 }
