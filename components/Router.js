@@ -33,6 +33,8 @@ const Router = ({ children }) => {
           }),
         );
 
+        console.log(user);
+
         dispatch(updateLoggedIn(true));
       } else {
         dispatch(getUserInfo(null));
@@ -47,7 +49,10 @@ const Router = ({ children }) => {
       <>
         {isInit ? (
           <>
-            {pathName != '/fullpage' && pathName != '/design' && isLoggedIn && <Header />}
+            {pathName != '/talk' &&
+              pathName != '/fullpage' &&
+              pathName != '/design' &&
+              isLoggedIn && <Header />}
             {isLoggedIn ? children : <Auth />}
           </>
         ) : (

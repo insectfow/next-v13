@@ -9,6 +9,7 @@ const nextConfig = {
       'firebasestorage.googleapis.com',
       'oaidalleapiprodscus.blob.core.windows.net',
       'graph.facebook.com',
+      'images.unsplash.com',
     ],
   },
   reactStrictMode: false,

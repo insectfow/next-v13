@@ -14,6 +14,11 @@ import noImage from '../../public/no-image.svg';
 export default function page() {
   const [itemList, setItemList] = useState([]);
   const [error, setError] = useState(null);
+
+  const springs = useSpring({
+    from: { x: -100, width: 0 },
+    to: { x: 100, width: 80 },
+  });
   useEffect(() => {
     dayjs.locale('ko');
     const getEqk = async () => {
